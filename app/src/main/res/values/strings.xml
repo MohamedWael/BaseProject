@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Base Library</string>
+    <string name="loading">Loading…</string>
+    <string name="cancel">Cancel</string>
+</resources>
