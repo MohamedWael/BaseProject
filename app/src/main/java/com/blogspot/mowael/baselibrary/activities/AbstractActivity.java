@@ -3,6 +3,7 @@ package com.blogspot.mowael.baselibrary.activities;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -61,9 +62,8 @@ public class AbstractActivity extends AppCompatActivity implements NetworkStateR
 
     }
 
-    public void makeFullScreen(boolean fullscreen) {
-        if (fullscreen)
-            this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    public void makeFullScreen() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
 
@@ -142,6 +142,10 @@ public class AbstractActivity extends AppCompatActivity implements NetworkStateR
 
     public void startActivity(Context context, Class<? extends Activity> aClass) {
         startActivity(context, aClass, null, false);
+    }
+
+    public void restrictToPortait() {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
 }
