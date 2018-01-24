@@ -187,6 +187,11 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
     }
 
     @Override
+    public void showSnakeMessage(View anchor, String msg) {
+
+    }
+
+    @Override
     public void showSnakeMessage(String msg) {
         super.showSnakeMessage(msg);
     }

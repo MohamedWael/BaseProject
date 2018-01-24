@@ -74,9 +74,10 @@ public class AbstractFragment extends Fragment implements Contract.AbstractView 
         return activity != null && isAdded();
     }
 
-    public void showSnakeMessage(String msg) {
-        if (getView() != null) {
-            final Snackbar snackbar = Snackbar.make(getView(), msg, Snackbar.LENGTH_SHORT);
+
+    public void showSnakeMessage(View anchor, String msg) {
+        if (anchor != null) {
+            final Snackbar snackbar = Snackbar.make(anchor, msg, Snackbar.LENGTH_SHORT);
             snackbar.setAction(R.string.cancel, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -88,6 +89,10 @@ public class AbstractFragment extends Fragment implements Contract.AbstractView 
             if (!TextUtils.isEmpty(msg))
                 Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void showSnakeMessage(String msg) {
+        showSnakeMessage(getView(), msg);
     }
 
 }
