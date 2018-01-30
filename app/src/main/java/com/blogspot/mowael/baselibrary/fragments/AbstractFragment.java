@@ -1,7 +1,10 @@
 package com.blogspot.mowael.baselibrary.fragments;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -95,4 +98,9 @@ public class AbstractFragment extends Fragment implements Contract.AbstractView 
         showSnakeMessage(getView(), msg);
     }
 
+
+    @TargetApi(Build.VERSION_CODES.M)
+    boolean isGranted(String permission) {
+        return getActivity().checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+    }
 }
