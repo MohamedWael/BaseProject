@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.codex.baselibrary.widgets.InnerNotificationView
+        <com.blogspot.mowael.baselibrary.widgets.InnerNotificationView
             android:id="@+id/invNotification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
