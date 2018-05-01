@@ -103,10 +103,12 @@ public class AbstractActivity extends AppCompatActivity implements NetworkStateR
      * @param <T>              any fragment that extend the android.support.v4.app.Fragment
      */
     public <T extends Fragment> void loadFragment(T fragment, @IdRes int in, String tag, boolean isAddToBackStack) {
-        if (isAddToBackStack)
-            getSupportFragmentManager().beginTransaction().addToBackStack(tag).setTransition(FragmentTransaction.TRANSIT_ENTER_MASK).replace(in, fragment, tag).commit();
-        else
-            getSupportFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_ENTER_MASK).replace(in, fragment, tag).commit();
+        if (getFragmentManager() == null) return;
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        if (isAddToBackStack) {
+            fragmentTransaction.addToBackStack(null);
+        }
+        fragmentTransaction.replace(in, fragment, tag).commit();
     }
 
 

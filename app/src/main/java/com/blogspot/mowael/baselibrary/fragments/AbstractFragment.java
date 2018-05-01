@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -48,9 +49,12 @@ public class AbstractFragment extends Fragment implements Contract.AbstractView 
 
 
     public <T extends Fragment> void loadFragment(T fragment, @IdRes int in, String tag, boolean isAddToBackStack) {
-        if (isAddToBackStack)
-            getFragmentManager().beginTransaction().addToBackStack(null).replace(in, fragment, tag).commit();
-        else getFragmentManager().beginTransaction().replace(in, fragment, tag).commit();
+        if (getFragmentManager() == null) return;
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        if (isAddToBackStack) {
+            fragmentTransaction.addToBackStack(null);
+        }
+        fragmentTransaction.replace(in, fragment, tag).commit();
     }
 
     public <T extends Fragment> void loadFragment(T fragment, @IdRes int in, boolean isAddToBackStack) {
