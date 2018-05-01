@@ -1,11 +1,14 @@
 package com.blogspot.mowael.baselibrary.activities;
 
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -96,6 +99,17 @@ public class BaseToolBarActivity extends BaseActivity {
 
     public Toolbar getToolbar() {
         return toolbar;
+    }
+
+    /**
+     * Change toolbar navigation color filter
+     *
+     * @param id          navigation icon color
+     * @param colorFilter color filter
+     */
+    public void setNavigationIconColorFilter(@ColorRes int id, PorterDuff.Mode colorFilter) {
+        getToolbar().getNavigationIcon().setColorFilter(
+                ContextCompat.getColor(this, id), colorFilter);
     }
 
     /**
