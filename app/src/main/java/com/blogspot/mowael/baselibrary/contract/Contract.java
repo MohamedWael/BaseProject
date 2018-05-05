@@ -32,7 +32,7 @@ public interface Contract {
 
     interface BaseViewModel extends AbstractViewModel {
 
-        void setView(BaseView view);
+        void setView(AbstractView view);
     }
 
 

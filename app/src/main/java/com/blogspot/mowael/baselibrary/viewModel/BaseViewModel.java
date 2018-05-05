@@ -20,7 +20,7 @@ public class BaseViewModel<V extends Contract.AbstractView> extends AbstractView
     }
 
     @Override
-    public void setView(Contract.BaseView view) {
+    public void setView(Contract.AbstractView view) {
         this.view = (V) view;
         onViewAdded(this.view);
     }
