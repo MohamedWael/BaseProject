@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 28
@@ -37,3 +38,5 @@ dependencies {
     // RxJava support for Paging
     api "android.arch.paging:rxjava2:1.0.1"
 }
+
+apply from: 'publishToLocalRepo.gradle'
