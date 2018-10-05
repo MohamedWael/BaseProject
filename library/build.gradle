@@ -37,6 +37,8 @@ dependencies {
     api "android.arch.paging:runtime:1.0.1"
     // RxJava support for Paging
     api "android.arch.paging:rxjava2:1.0.1"
+
+    implementation 'mwael:utils:1.0.0-snapshot'
 }
 
 apply from: 'publishToLocalRepo.gradle'

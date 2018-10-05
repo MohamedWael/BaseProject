@@ -13,7 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.blogspot.mowael.baselibrary.contract.Contract;
-import com.blogspot.mowael.baselibrary.network.NetworkStateReceiver;
+import com.blogspot.mowael.utilslibrary.network.NetworkStateReceiver;
 
 
 /**

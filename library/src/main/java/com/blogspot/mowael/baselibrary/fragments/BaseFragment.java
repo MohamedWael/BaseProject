@@ -18,8 +18,8 @@ import com.blogspot.mowael.baselibrary.activities.BaseActivity;
 import com.blogspot.mowael.baselibrary.activities.BaseToolBarActivity;
 import com.blogspot.mowael.baselibrary.contract.Contract;
 import com.blogspot.mowael.baselibrary.contract.ErrorMessageHandler;
-import com.blogspot.mowael.baselibrary.utils.Logger;
 import com.blogspot.mowael.baselibrary.viewModel.BaseViewModel;
+import com.blogspot.mowael.utilslibrary.Logger;
 
 /**
  * Created by moham on 12/26/2017.
