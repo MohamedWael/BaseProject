@@ -3,7 +3,7 @@ publishing {
         library(MavenPublication) {
             setGroupId(GROUPID)
             setArtifactId(ARTIFACTID)
-            version VERSION
+            version VERSION + '-snapshot'
             artifact(bundleReleaseAar)
 
             pom.withXml {
