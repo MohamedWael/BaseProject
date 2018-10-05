@@ -4,7 +4,7 @@ publishing {
             setGroupId(GROUPID)
             setArtifactId(ARTIFACTID)
             version VERSION
-            artifact(bundleRelease)
+            artifact(bundleReleaseAar)
 
             pom.withXml {
                 def dependenciesNode = asNode().appendNode('dependencies')
