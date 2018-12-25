@@ -1,6 +1,6 @@
 package com.blogspot.mowael.baselibrary.viewModel;
 
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel;
 
 import com.blogspot.mowael.baselibrary.contract.Contract;
 

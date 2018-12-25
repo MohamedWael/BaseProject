@@ -1,7 +1,7 @@
 package com.blogspot.mowael.baselibrary.dialog;
 
 import android.app.Activity;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 import com.blogspot.mowael.baselibrary.R;
 
