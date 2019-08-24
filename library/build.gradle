@@ -42,5 +42,3 @@ dependencies {
 
     implementation 'mwael:utils:1.0.0-snapshot'
 }
-
-apply from: 'publishToLocalRepo.gradle'
