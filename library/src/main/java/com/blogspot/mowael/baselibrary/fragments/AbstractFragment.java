@@ -49,8 +49,8 @@ public class AbstractFragment extends Fragment implements Contract.AbstractView 
 
 
     public <T extends Fragment> void loadFragment(T fragment, @IdRes int in, String tag, boolean isAddToBackStack) {
-        if (getFragmentManager() == null) return;
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        if (getParentFragmentManager() == null) return;
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         if (isAddToBackStack) {
             fragmentTransaction.addToBackStack(null);
         }
