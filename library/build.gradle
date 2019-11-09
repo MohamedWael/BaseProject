@@ -3,6 +3,8 @@ apply plugin: 'maven-publish'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.MohamedWael'
 
 android {
     compileSdkVersion 29
@@ -42,5 +44,5 @@ dependencies {
     // RxJava support for Paging
     api "android.arch.paging:rxjava2:1.0.1"
 
-    implementation 'mwael:utils:1.0.0-snapshot'
+    implementation 'com.github.MohamedWael:UtilsLibrary:1.0.0'
 }
