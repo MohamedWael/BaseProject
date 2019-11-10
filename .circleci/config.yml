@@ -27,9 +27,9 @@ jobs:
           name: Build debug APK and release APK
           command: |
             chmod +x gradlew
-            ./gradlew :sampleapp:assembleDebug
-            ./gradlew :lib:build
-            ./gradlew :lib:install
+            ./gradlew :sample:assembleDebug
+            ./gradlew :library:build
+            ./gradlew :library:install
 
       # Download and cache dependencies
       - restore_cache:
