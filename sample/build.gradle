@@ -32,7 +32,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation 'mwael:baseProject:1.0.1-snapshot'
-    implementation 'mwael:utils:1.0.0-snapshot'
+    implementation project(path: ':library')
+    implementation 'com.github.MohamedWael:UtilsLibrary:1.0.0'
 
 }
