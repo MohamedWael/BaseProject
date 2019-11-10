@@ -1,4 +1,6 @@
-# BaseProject [![](https://jitpack.io/v/MohamedWael/BaseProject.svg)](https://jitpack.io/#MohamedWael/BaseProject)
+# BaseProject 
+[![CircleCI](https://circleci.com/gh/MohamedWael/BaseProject/tree/master.svg?style=svg)](https://circleci.com/gh/MohamedWael/BaseProject/tree/master) 
+[![](https://jitpack.io/v/MohamedWael/BaseProject.svg)](https://jitpack.io/#MohamedWael/BaseProject)
 
 Android Base project based on MVVM architectural pattern
 
