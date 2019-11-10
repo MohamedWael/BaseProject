@@ -3,15 +3,16 @@ package com.blogspot.mowael.baselibrary.activities;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.FrameLayout;
+
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.core.content.ContextCompat;
 import androidx.appcompat.widget.Toolbar;
-import android.view.View;
-import android.widget.FrameLayout;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.blogspot.mowael.baselibrary.R;
 import com.blogspot.mowael.baselibrary.widgets.InnerNotificationView;
@@ -54,9 +55,16 @@ public class BaseToolBarActivity extends BaseActivity {
      * add back arrow to toolbar
      */
     public void enableBackButton() {
+        enableBackButton(true);
+    }
+
+    /**
+     * add back arrow to toolbar
+     */
+    public void enableBackButton(boolean enable) {
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(enable);
+            getSupportActionBar().setDisplayShowHomeEnabled(enable);
         }
     }
 
