@@ -46,5 +46,5 @@ dependencies {
     // RxJava support for Paging
     api "android.arch.paging:rxjava2:1.0.1"
 
-    implementation 'com.github.MohamedWael:UtilsLibrary:1.0.0'
+    implementation 'com.github.MohamedWael:UtilsLibrary:1.0.1'
 }
