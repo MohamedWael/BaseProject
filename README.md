@@ -1,6 +1,9 @@
 # BaseProject 
 [![CircleCI](https://circleci.com/gh/MohamedWael/BaseProject/tree/master.svg?style=svg)](https://circleci.com/gh/MohamedWael/BaseProject/tree/master) 
-[![](https://jitpack.io/v/MohamedWael/BaseProject.svg)](https://jitpack.io/#MohamedWael/BaseProject)
+[![](https://jitpack.io/v/MohamedWael/BaseProject.svg)](https://jitpack.io/#MohamedWael/BaseProject) 
+<a href="https://twitter.com/intent/follow?screen_name=imohamedwael">
+        <img src="https://img.shields.io/twitter/follow/imohamedwael?style=social&logo=twitter"
+            alt="follow on Twitter"></a>
 
 Android Base project based on MVVM architectural pattern
 
@@ -28,6 +31,4 @@ dependencies {
 }
 </pre>
 
-<a href="https://twitter.com/intent/follow?screen_name=imohamedwael">
-        <img src="https://img.shields.io/twitter/follow/imohamedwael?style=social&logo=twitter"
-            alt="follow on Twitter"></a>
+
