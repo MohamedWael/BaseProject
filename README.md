@@ -27,7 +27,7 @@ allprojects {
 <pre>
 dependencies {
     ...
-    <b>implementation 'com.github.MohamedWael:BaseProject:0.0.1'</b>
+    <b>implementation 'com.github.MohamedWael:BaseProject:0.0.2'</b>
 }
 </pre>
 
