@@ -1,6 +1,7 @@
 package com.blogspot.mowael.baselibrary.dialog;
 
-import android.app.Activity;
+import android.content.Context;
+
 import androidx.appcompat.app.AlertDialog;
 
 import com.blogspot.mowael.baselibrary.R;
@@ -14,15 +15,15 @@ public class DefaultProgressDialog implements ProgressDialog {
     private static DefaultProgressDialog instance;
     private AlertDialog dialog;
 
-    public static DefaultProgressDialog newInstance(Activity activity) {
+    public static DefaultProgressDialog newInstance(Context activity) {
         return new DefaultProgressDialog(activity);
     }
 
-    protected DefaultProgressDialog(Activity activity) {
+    protected DefaultProgressDialog(Context activity) {
         initDialog(activity);
     }
 
-    protected void initDialog(Activity activity) {
+    protected void initDialog(Context activity) {
         dialog = new AlertDialog.Builder(activity).setView(R.layout.loading_layout).setCancelable(false).create();
     }
 

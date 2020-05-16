@@ -2,10 +2,13 @@ package com.blogspot.mowael.baselibrary.fragments;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
+
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +21,8 @@ import com.blogspot.mowael.baselibrary.activities.BaseActivity;
 import com.blogspot.mowael.baselibrary.activities.BaseToolBarActivity;
 import com.blogspot.mowael.baselibrary.contract.Contract;
 import com.blogspot.mowael.baselibrary.contract.ErrorMessageHandler;
-import com.blogspot.mowael.baselibrary.viewModel.BaseViewModel;
+import com.blogspot.mowael.baselibrary.viewModel.ModernViewModel;
+import com.blogspot.mowael.baselibrary.vo.ViewMessage;
 import com.blogspot.mowael.utilslibrary.Logger;
 
 /**
@@ -55,8 +59,44 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
 
     public <T extends ViewModel> T createViewModel(Class<T> viewModelClass) {
         T viewModel = ViewModelProviders.of(this).get(viewModelClass);
-        if (viewModel instanceof BaseViewModel) ((BaseViewModel) viewModel).setView(this);
+        if (viewModel instanceof Contract.BaseViewModel)
+            setUpViewModel((Contract.BaseViewModel) viewModel);
+        if (viewModel instanceof ModernViewModel) setupModernViewModel((ModernViewModel) viewModel);
         return viewModel;
+    }
+
+    public void setupModernViewModel(ModernViewModel viewModel) {
+        viewModel.getProgressDialogLiveData().observe(getViewLifecycleOwner(), booleanSingleLiveDataEvent -> {
+            Boolean showProgress = booleanSingleLiveDataEvent.getContentIfNotHandled();
+            if (showProgress != null) {
+                if (showProgress) {
+                    showProgressDialog();
+                } else {
+                    hideProgressDialog();
+                }
+            }
+        });
+        viewModel.getProgressLiveData().observe(getViewLifecycleOwner(), booleanSingleLiveDataEvent -> {
+            Boolean showProgress = booleanSingleLiveDataEvent.getContentIfNotHandled();
+            if (showProgress != null) showProgress(showProgress);
+        });
+
+        viewModel.getViewMessageLiveData().observe(getViewLifecycleOwner(), viewMessageSingleLiveDataEvent -> {
+            ViewMessage viewMessage = viewMessageSingleLiveDataEvent.getContentIfNotHandled();
+            if (viewMessage != null) handleViewMessage(viewMessage);
+        });
+    }
+
+    public void handleViewMessage(ViewMessage viewMessage) {
+        if (viewMessage.getErrorMessageHandler() != null) {
+            showMessage(viewMessage.getErrorMessageHandler());
+        } else if (viewMessage.getMsg() != null) {
+            showMessage(viewMessage.getMsg());
+        } else if (viewMessage.getMessageResource() != null) {
+            showMessage(viewMessage.getMessageResource().getMsgRes(), viewMessage.getMessageResource().getArgs());
+        } else {
+            Logger.d("cannot display message!");
+        }
     }
 
     public void setUpViewModel(Contract.BaseViewModel viewModel) {
@@ -117,7 +157,7 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
     @Nullable
     public View attachToRootView(View view) {
         if (rootView == null)
-            throwMoFragmentException();
+            throwBaseFragmentException();
         rlFragmentRoot.addView(view);
         return rootView;
     }
@@ -160,13 +200,13 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
         loadFragment(fragment, true);
     }
 
-    private void throwMoFragmentException() {
+    private void throwBaseFragmentException() {
         throw new RuntimeException("You have to call on super.onCreateView() in your onCreateView before inflating your View");
     }
 
     @Override
     public void onRefresh() {
-
+        // not implemented
     }
 
     @Override
@@ -188,21 +228,42 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
 
     @Override
     public void showSnakeMessage(String msg) {
-        super.showSnakeMessage(msg);
+        showMessage(msg);
     }
 
     @Override
     public void showSnakeMessage(int msgRes) {
-        showSnakeMessage(getString(msgRes));
+        showMessage(msgRes);
     }
 
     @Override
     public void showSnakeMessage(int msgRes, Object... args) {
-        showSnakeMessage(getString(msgRes, args));
+        showMessage(msgRes, args);
     }
 
     @Override
     public void showSnakeMessage(ErrorMessageHandler errorMessageHandler) {
+        showMessage(errorMessageHandler);
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        super.showMessage(msg);
+    }
+
+    @Override
+    public void showMessage(int msgRes) {
+        showMessage(getString(msgRes));
+    }
+
+    @Override
+    public void showMessage(int msgRes, Object... args) {
+        if (args == null) showMessage(msgRes);
+        else showMessage(getString(msgRes, args));
+    }
+
+    @Override
+    public void showMessage(ErrorMessageHandler errorMessageHandler) {
         if (errorMessageHandler != null) {
             if (!TextUtils.isEmpty(errorMessageHandler.getMessage()))
                 showSnakeMessage(errorMessageHandler.getMessage());
@@ -221,9 +282,6 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
         if (srlRoot != null) srlRoot = null;
         if (llBlockView != null) llBlockView = null;
         if (rootView != null) rootView = null;
-
         super.onDestroy();
     }
-
-
 }

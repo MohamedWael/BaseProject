@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
+
 import com.google.android.material.snackbar.Snackbar;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -82,7 +86,7 @@ public class AbstractFragment extends Fragment implements Contract.AbstractView 
     }
 
 
-    public void showSnakeMessage(View anchor, String msg) {
+    public void showMessage(View anchor, String msg) {
         if (anchor != null) {
             final Snackbar snackbar = Snackbar.make(anchor, msg, Snackbar.LENGTH_SHORT);
             snackbar.setAction(R.string.cancel, new View.OnClickListener() {
@@ -98,8 +102,18 @@ public class AbstractFragment extends Fragment implements Contract.AbstractView 
         }
     }
 
+    /**
+     * Deprecated, use showMessage() instead
+     *
+     * @param msg
+     */
+    @Deprecated
     public void showSnakeMessage(String msg) {
-        showSnakeMessage(getView(), msg);
+        showMessage(msg);
+    }
+
+    public void showMessage(String msg) {
+        showMessage(getView(), msg);
     }
 
 
