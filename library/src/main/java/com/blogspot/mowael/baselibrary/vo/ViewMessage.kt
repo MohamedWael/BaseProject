@@ -8,7 +8,7 @@ data class ViewMessage(
         var errorMessageHandler: ErrorMessageHandler? = null
 )
 
-data class MessageResource(var msgRes: Int, var args: Array<out Any>? = null) {
+data class MessageResource(val msgRes: Int, val args: Array<out Any>? = null) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
