@@ -4,7 +4,6 @@ android {
     compileSdkVersion 28
 
 
-
     defaultConfig {
         applicationId "com.blogspot.mowael.sample"
         minSdkVersion 19
@@ -23,16 +22,20 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.2.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta5'
+    implementation 'androidx.appcompat:appcompat:1.2.0-rc01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(path: ':library')
-    implementation 'com.github.MohamedWael:UtilsLibrary:1.0.0'
+    implementation 'com.github.MohamedWael:UtilsLibrary:1.0.1'
 
 }
