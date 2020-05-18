@@ -1,6 +1,7 @@
 package com.blogspot.mowael.baselibrary.fragments;
 
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -58,7 +59,7 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
     }
 
     public <T extends ViewModel> T createViewModel(Class<T> viewModelClass) {
-        T viewModel = ViewModelProviders.of(this).get(viewModelClass);
+        T viewModel = new ViewModelProvider(this).get(viewModelClass);
         if (viewModel instanceof Contract.BaseViewModel)
             setUpViewModel((Contract.BaseViewModel) viewModel);
         if (viewModel instanceof ModernViewModel) setupModernViewModel((ModernViewModel) viewModel);
