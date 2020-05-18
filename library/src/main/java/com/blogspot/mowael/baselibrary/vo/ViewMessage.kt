@@ -18,14 +18,14 @@ data class MessageResource(val msgRes: Int, val args: Array<out Any>? = null) {
         if (msgRes != other.msgRes) return false
         if (args != null) {
             if (other.args == null) return false
-            if (!args.contentEquals(other.args!!)) return false
+            if (!args.contentEquals(other.args)) return false
         } else if (other.args != null) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        var result = msgRes ?: 0
+        var result = msgRes
         result = 31 * result + (args?.contentHashCode() ?: 0)
         return result
     }
