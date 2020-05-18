@@ -2,9 +2,9 @@ package com.blogspot.mowael.baselibrary.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import com.blogspot.mowael.baselibrary.contract.ErrorMessageHandler
-import com.blogspot.mowael.baselibrary.utils.SingleLiveDataEvent
 import com.blogspot.mowael.baselibrary.vo.MessageResource
 import com.blogspot.mowael.baselibrary.vo.ViewMessage
+import com.blogspot.mowael.utilslibrary.utils.SingleLiveDataEvent
 
 open class ModernViewModel : AbstractViewModel() {
 
