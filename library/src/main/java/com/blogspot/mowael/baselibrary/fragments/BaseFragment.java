@@ -56,7 +56,16 @@ public class BaseFragment extends AbstractFragment implements SwipeRefreshLayout
     }
 
     public <T extends ViewModel> T createViewModel(Class<T> viewModelClass) {
-        T viewModel = new ViewModelProvider(this).get(viewModelClass);
+        return createViewModel(viewModelClass, null);
+    }
+
+    public <T extends ViewModel> T createViewModel(Class<T> viewModelClass, ViewModelProvider.Factory factory) {
+        T viewModel;
+        if (factory != null) {
+            viewModel = new ViewModelProvider(this, factory).get(viewModelClass);
+        } else {
+            viewModel = new ViewModelProvider(this).get(viewModelClass);
+        }
         if (viewModel instanceof Contract.BaseViewModel)
             setUpViewModel((Contract.BaseViewModel) viewModel);
         if (viewModel instanceof ModernViewModel) setupModernViewModel((ModernViewModel) viewModel);
