@@ -17,14 +17,42 @@ public interface Contract {
 
         void hideProgressDialog();
 
+        /**
+         * Deprecated, use showMessage() instead
+         * @param msg
+         */
+        @Deprecated
         void showSnakeMessage(String msg);
 
+        /**
+         * Deprecated, use showMessage() instead
+         * @param msgRes
+         */
+        @Deprecated
         void showSnakeMessage(int msgRes);
 
+        /**
+         * Deprecated, use showMessage() instead
+         * @param msgRes
+         * @param args
+         */
+        @Deprecated
         void showSnakeMessage(int msgRes, Object... args);
 
+        /**
+         * Deprecated, use showMessage() instead
+         * @param errorMessageHandler
+         */
+        @Deprecated
         void showSnakeMessage(ErrorMessageHandler errorMessageHandler);
 
+        void showMessage(String msg);
+
+        void showMessage(int msgRes);
+
+        void showMessage(int msgRes, Object... args);
+
+        void showMessage(ErrorMessageHandler errorMessageHandler);
     }
 
     interface AbstractViewModel {
